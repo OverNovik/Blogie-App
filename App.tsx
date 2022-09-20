@@ -14,7 +14,13 @@ const App: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="TutorialScreen" component={TutorialScreen} />
+        <Stack.Screen
+          name="TutorialScreen"
+          component={TutorialScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
