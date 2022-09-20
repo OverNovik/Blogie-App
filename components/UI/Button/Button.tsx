@@ -5,7 +5,7 @@ import {styles} from './style';
 interface Props {
   children: React.ReactNode;
   onPress: () => void;
-  styleProp: any;
+  styleProp?: any;
 }
 
 const Button: React.FC<Props> = ({children, onPress, styleProp}) => {
