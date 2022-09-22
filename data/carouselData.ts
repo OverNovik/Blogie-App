@@ -1,9 +1,9 @@
-interface Data {
-  id: Number;
-  title: String;
-  text: String;
-  firstImages: any[];
-  secondImages: any[];
+export interface Data {
+  id: number;
+  title: string;
+  text: string;
+  firstImages: number[];
+  secondImages: number[];
 }
 
 export const data: Data[] = [

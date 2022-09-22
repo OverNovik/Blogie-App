@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, {useState, useRef, useEffect} from 'react';
 import {Text, View, Dimensions, Image} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -15,12 +16,12 @@ const renderItem = ({item}: any) => {
     <View style={styles.itemContainer}>
       <View style={styles.imagesContainer}>
         <View>
-          {images1.map(item => (
+          {images1.map((item: number) => (
             <Image source={item} style={styles.image} key={Math.random()} />
           ))}
         </View>
         <View>
-          {images2.map(item => (
+          {images2.map((item: number) => (
             <Image source={item} style={styles.image} key={Math.random()} />
           ))}
         </View>
@@ -50,7 +51,7 @@ const TutorialScreen: React.FC = () => {
         renderItem={renderItem}
         sliderWidth={SLIDER_WIDTH}
         itemWidth={ITEM_WIDTH}
-        onSnapToItem={index => setIndex(index)}
+        onSnapToItem={(index: number) => setIndex(index)}
       />
       <Button
         onPress={() => isCarousel?.current?.snapToNext()}
