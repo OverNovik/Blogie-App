@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+import {useNavigation} from '@react-navigation/native';
 import React, {useState, useRef, useEffect} from 'react';
 import {Text, View, Dimensions, Image} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -35,6 +36,7 @@ const renderItem = ({item}: any) => {
 const TutorialScreen: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
   const isCarousel = useRef(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,7 +56,11 @@ const TutorialScreen: React.FC = () => {
         onSnapToItem={(index: number) => setIndex(index)}
       />
       <Button
-        onPress={() => isCarousel?.current?.snapToNext()}
+        onPress={
+          index !== 2
+            ? () => isCarousel?.current?.snapToNext()
+            : () => navigation.navigate('LoginScreen')
+        }
         styleProp={index === 2 ? styles.startedBtn : styles.skipBtn}>
         {index !== 2 ? 'Skip' : 'Get started'}
       </Button>
