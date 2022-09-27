@@ -6,6 +6,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {GlobalStyles} from './constants/style';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import TutorialScreen from './screens/TutorialScreen/TutorialScreen';
+import SignUpScreen from './screens/SignUpScreen/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,13 @@ const App: React.FC = () => {
           <Stack.Screen
             name="LoginScreen"
             component={LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SignUpScreen"
+            component={SignUpScreen}
             options={{
               headerShown: false,
             }}
