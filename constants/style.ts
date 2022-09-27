@@ -6,5 +6,6 @@ export const GlobalStyles = {
     gray20: '#888888',
     gray30: '#585858',
     white: '#FFFFFF',
+    white10: '#F6F6F6',
   },
 };
