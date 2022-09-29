@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    marginTop: 92,
+    marginTop: '23%',
     marginBottom: 41.27,
   },
   inputView: {
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     width: 108,
   },
   haveAccount: {
-    marginTop: '40%',
+    marginTop: '35%',
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'center',

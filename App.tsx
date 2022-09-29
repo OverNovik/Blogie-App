@@ -42,6 +42,13 @@ const App: React.FC = () => {
               headerShown: false,
             }}
           />
+          <Stack.Screen
+            name="ForgotPasswordScreen"
+            component={Screens.ForgotPasswordScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

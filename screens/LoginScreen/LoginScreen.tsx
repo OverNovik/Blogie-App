@@ -43,7 +43,9 @@ const LoginScreen: React.FC = () => {
             />
             <Text>Remember me?</Text>
           </View>
-          <Button styleProp={styles.secondBtn} onPress={() => {}}>
+          <Button
+            styleProp={styles.secondBtn}
+            onPress={() => navigation.navigate('ForgotPasswordScreen')}>
             Forgot Password?
           </Button>
         </View>
