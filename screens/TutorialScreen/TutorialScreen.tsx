@@ -35,8 +35,8 @@ const renderItem = ({item}: any) => {
 
 const TutorialScreen: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
-  const isCarousel = useRef(null);
-  const navigation = useNavigation();
+  const isCarousel = useRef<any>(null);
+  const navigation = useNavigation<any>();
 
   useEffect(() => {
     const interval = setInterval(() => {

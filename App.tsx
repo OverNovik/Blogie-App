@@ -4,8 +4,7 @@ import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {GlobalStyles} from './constants/style';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
-import TutorialScreen from './screens/TutorialScreen/TutorialScreen';
+import * as Screens from './screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,14 +23,21 @@ const App: React.FC = () => {
         <Stack.Navigator>
           <Stack.Screen
             name="TutorialScreen"
-            component={TutorialScreen}
+            component={Screens.TutorialScreen}
             options={{
               headerShown: false,
             }}
           />
           <Stack.Screen
             name="LoginScreen"
-            component={LoginScreen}
+            component={Screens.LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SignUpScreen"
+            component={Screens.SignUpScreen}
             options={{
               headerShown: false,
             }}
