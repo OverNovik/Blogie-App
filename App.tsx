@@ -20,27 +20,19 @@ const App: React.FC = () => {
         backgroundColor={GlobalStyles.colors.white}
       />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
           <Stack.Screen
             name="TutorialScreen"
             component={Screens.TutorialScreen}
-            options={{
-              headerShown: false,
-            }}
           />
+          <Stack.Screen name="LoginScreen" component={Screens.LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={Screens.SignUpScreen} />
           <Stack.Screen
-            name="LoginScreen"
-            component={Screens.LoginScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="SignUpScreen"
-            component={Screens.SignUpScreen}
-            options={{
-              headerShown: false,
-            }}
+            name="ForgotPasswordScreen"
+            component={Screens.ForgotPasswordScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -7,9 +7,31 @@ export const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.white,
     alignItems: 'center',
   },
-  image: {
-    marginTop: '23%',
-    marginBottom: 41.27,
+  textContainer: {
+    alignItems: 'center',
+  },
+  title: {
+    fontFamily: 'DM Sans',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: 18,
+    lineHeight: 23,
+    textAlign: 'center',
+    letterSpacing: -0.3,
+    color: GlobalStyles.colors.gray30,
+    marginTop: '20%',
+  },
+  description: {
+    width: 297,
+    fontFamily: 'DM Sans',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 13,
+    lineHeight: 17,
+    textAlign: 'center',
+    letterSpacing: -0.3,
+    color: GlobalStyles.colors.gray20,
+    marginTop: 29,
   },
   inputView: {
     backgroundColor: GlobalStyles.colors.white10,
@@ -27,6 +49,7 @@ export const styles = StyleSheet.create({
     lineHeight: 21,
     color: GlobalStyles.colors.gray30,
     marginBottom: 10,
+    marginTop: 39,
   },
   textInput: {
     width: 327,
@@ -35,33 +58,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 20,
   },
-  utilsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  checkBoxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: '25%',
-  },
-  secondBtn: {
-    backgroundColor: GlobalStyles.colors.white,
-    color: GlobalStyles.colors.violet20,
-    fontFamily: 'DM Sans',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 13,
-    lineHeight: 17,
-    width: 108,
-  },
-  haveAccount: {
-    marginTop: '35%',
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    justifyContent: 'center',
-  },
-  signUpBtn: {
-    width: 50,
+  btn: {
+    width: 150,
   },
 });
