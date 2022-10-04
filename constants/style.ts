@@ -7,5 +7,7 @@ export const GlobalStyles = {
     gray30: '#585858',
     white: '#FFFFFF',
     white10: '#F6F6F6',
+    error10: '#FA8072',
+    error20: '#FF0000',
   },
 };
