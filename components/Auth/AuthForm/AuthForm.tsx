@@ -74,7 +74,7 @@ const AuthForm = ({
       <View>
         <Input
           label="Email"
-          onUpdateValue={updateInputValueHandler.bind(this, 'email')}
+          onUpdateValue={value => updateInputValueHandler('email', value)}
           value={enteredEmail}
           keyboardType="email-address"
           isInvalid={emailIsInvalid}
@@ -83,7 +83,9 @@ const AuthForm = ({
         {!isLogin && (
           <Input
             label="Username"
-            onUpdateValue={updateInputValueHandler.bind(this, 'confirmEmail')}
+            onUpdateValue={value =>
+              updateInputValueHandler('confirmEmail', value)
+            }
             value={enteredUserName}
             keyboardType={'default'}
             isInvalid={userNameIsInvalid}
@@ -92,7 +94,7 @@ const AuthForm = ({
         )}
         <Input
           label="Password"
-          onUpdateValue={updateInputValueHandler.bind(this, 'password')}
+          onUpdateValue={value => updateInputValueHandler('password', value)}
           secure
           value={enteredPassword}
           isInvalid={passwordIsInvalid}
@@ -101,10 +103,9 @@ const AuthForm = ({
         {!isLogin && (
           <Input
             label="Confirm Password"
-            onUpdateValue={updateInputValueHandler.bind(
-              this,
-              'confirmPassword',
-            )}
+            onUpdateValue={value =>
+              updateInputValueHandler('confirmPassword', value)
+            }
             secure
             value={enteredConfirmPassword}
             isInvalid={passwordsDontMatch}
