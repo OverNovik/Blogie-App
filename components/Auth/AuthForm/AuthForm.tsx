@@ -43,23 +43,6 @@ const AuthForm = ({
     confirmPassword: passwordsDontMatch,
   } = credentialsInvalid;
 
-  const updateInputValueHandler = (inputType: string, enteredValue: string) => {
-    switch (inputType) {
-      case 'email':
-        setEnteredEmail(enteredValue);
-        break;
-      case 'userName':
-        setEnteredUserName(enteredValue);
-        break;
-      case 'password':
-        setEnteredPassword(enteredValue);
-        break;
-      case 'confirmPassword':
-        setEnteredConfirmPassword(enteredValue);
-        break;
-    }
-  };
-
   const submitHandler = () => {
     onSubmit({
       email: enteredEmail,
@@ -74,7 +57,7 @@ const AuthForm = ({
       <View>
         <Input
           label="Email"
-          onUpdateValue={value => updateInputValueHandler('email', value)}
+          onUpdateValue={setEnteredEmail}
           value={enteredEmail}
           keyboardType="email-address"
           isInvalid={emailIsInvalid}
@@ -83,9 +66,7 @@ const AuthForm = ({
         {!isLogin && (
           <Input
             label="Username"
-            onUpdateValue={value =>
-              updateInputValueHandler('confirmEmail', value)
-            }
+            onUpdateValue={setEnteredUserName}
             value={enteredUserName}
             keyboardType={'default'}
             isInvalid={userNameIsInvalid}
@@ -94,7 +75,7 @@ const AuthForm = ({
         )}
         <Input
           label="Password"
-          onUpdateValue={value => updateInputValueHandler('password', value)}
+          onUpdateValue={setEnteredPassword}
           secure
           value={enteredPassword}
           isInvalid={passwordIsInvalid}
@@ -103,9 +84,7 @@ const AuthForm = ({
         {!isLogin && (
           <Input
             label="Confirm Password"
-            onUpdateValue={value =>
-              updateInputValueHandler('confirmPassword', value)
-            }
+            onUpdateValue={setEnteredConfirmPassword}
             secure
             value={enteredConfirmPassword}
             isInvalid={passwordsDontMatch}
