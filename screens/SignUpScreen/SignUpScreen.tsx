@@ -7,16 +7,15 @@ import {styles} from './style';
 
 interface signUpProps {
   email: string;
-  userName: string;
   password: string;
 }
 
 const SignUpScreen: React.FC = () => {
   const [isAuth, setAuth] = useState(false);
 
-  const signUpHandler = async ({email, userName, password}: signUpProps) => {
+  const signUpHandler = async ({email, password}: signUpProps) => {
     setAuth(true);
-    await createUser(email, userName, password);
+    await createUser(email, password);
     setAuth(false);
   };
 

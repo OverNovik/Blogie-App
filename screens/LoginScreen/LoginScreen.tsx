@@ -6,17 +6,35 @@ import {GlobalStyles} from '../../constants/style';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
 import AuthContent from '../../components/Auth/AuthContent/AuthContent';
+import {login} from '../../util/auth';
+import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
+
+interface loginProps {
+  email: string;
+  password: string;
+}
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean | undefined>(
     false,
   );
+  const [isAuth, setAuth] = useState(false);
+
+  const loginHandler = async ({email, password}: loginProps) => {
+    setAuth(true);
+    await login(email, password);
+    setAuth(false);
+  };
+
+  if (isAuth) {
+    return <LoadingOverlay />;
+  }
   return (
     <>
       <View style={styles.contentContainer}>
         <Image source={require('../../assets/logo.png')} style={styles.image} />
-        <AuthContent isLogin={true} onAuthenticate={() => {}}>
+        <AuthContent isLogin={true} onAuthenticate={loginHandler}>
           <View style={styles.utilsContainer}>
             <View style={styles.checkBoxContainer}>
               <CheckBox
