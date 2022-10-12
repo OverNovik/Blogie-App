@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Text, View, Image, Alert} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import Button from '../../components/UI/Button/Button';
@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import {login} from '../../util/auth';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
+import {AuthContext} from '../../store/authContext';
 
 interface loginProps {
   email: string;
@@ -20,11 +21,13 @@ const LoginScreen: React.FC = () => {
     false,
   );
   const [isAuth, setAuth] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const loginHandler = async ({email, password}: loginProps) => {
     setAuth(true);
     try {
-      await login(email, password);
+      const token = await login(email, password);
+      authCtx.authenticate(token);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
     }

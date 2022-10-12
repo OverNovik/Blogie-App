@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Image, Alert} from 'react-native';
 import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
+import {AuthContext} from '../../store/authContext';
 import {createUser} from '../../util/auth';
 import {styles} from './style';
 
@@ -12,11 +13,13 @@ interface signUpProps {
 
 const SignUpScreen: React.FC = () => {
   const [isAuth, setAuth] = useState(false);
+  const authCtx = useContext(AuthContext);
 
   const signUpHandler = async ({email, password}: signUpProps) => {
     setAuth(true);
     try {
-      await createUser(email, password);
+      const token = await createUser(email, password);
+      authCtx.authenticate(token);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
     }
