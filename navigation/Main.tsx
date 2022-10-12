@@ -1,12 +1,15 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthScreens from './AuthScreens';
+import AuthProvider from '../store/AuthProvider';
 
 const Main: React.FC = () => {
   return (
-    <NavigationContainer>
-      <AuthScreens />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <AuthScreens />
+      </NavigationContainer>
+    </AuthProvider>
   );
 };
 
