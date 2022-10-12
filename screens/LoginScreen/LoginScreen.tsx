@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Alert} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import Button from '../../components/UI/Button/Button';
 import {GlobalStyles} from '../../constants/style';
@@ -23,7 +23,11 @@ const LoginScreen: React.FC = () => {
 
   const loginHandler = async ({email, password}: loginProps) => {
     setAuth(true);
-    await login(email, password);
+    try {
+      await login(email, password);
+    } catch (e) {
+      Alert.alert('Authorization Error.', 'Please check the entered data.');
+    }
     setAuth(false);
   };
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Alert} from 'react-native';
 import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import {createUser} from '../../util/auth';
@@ -15,7 +15,11 @@ const SignUpScreen: React.FC = () => {
 
   const signUpHandler = async ({email, password}: signUpProps) => {
     setAuth(true);
-    await createUser(email, password);
+    try {
+      await createUser(email, password);
+    } catch (e) {
+      Alert.alert('Authorization Error.', 'Please check the entered data.');
+    }
     setAuth(false);
   };
 
