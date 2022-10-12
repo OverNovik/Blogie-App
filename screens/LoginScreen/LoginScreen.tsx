@@ -20,7 +20,7 @@ const LoginScreen: React.FC = () => {
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean | undefined>(
     false,
   );
-  const [isAuth, setAuth] = useState(false);
+  const [isAuth, setAuth] = useState<boolean>(false);
   const authCtx = useContext(AuthContext);
 
   const loginHandler = async ({email, password}: loginProps) => {
@@ -30,8 +30,8 @@ const LoginScreen: React.FC = () => {
       authCtx.authenticate(token);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
+      setAuth(false);
     }
-    setAuth(false);
   };
 
   if (isAuth) {

@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthScreens from './AuthScreens';
-import AuthProvider from '../store/AuthProvider';
+import {AuthContext} from '../store/authContext';
+import AuthorizedScreens from './AuthorizedScreens';
 
 const Main: React.FC = () => {
+  const authCtx = useContext(AuthContext);
+  console.log(authCtx);
   return (
-    <AuthProvider>
-      <NavigationContainer>
-        <AuthScreens />
-      </NavigationContainer>
-    </AuthProvider>
+    <NavigationContainer>
+      {authCtx.isAuth ? <AuthorizedScreens /> : <AuthScreens />}
+    </NavigationContainer>
   );
 };
 

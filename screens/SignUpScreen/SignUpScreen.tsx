@@ -22,8 +22,8 @@ const SignUpScreen: React.FC = () => {
       authCtx.authenticate(token);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
+      setAuth(false);
     }
-    setAuth(false);
   };
 
   if (isAuth) {

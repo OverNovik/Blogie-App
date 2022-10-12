@@ -7,4 +7,4 @@ interface Auth {
   logout: () => void;
 }
 
-export const AuthContext = createContext<Auth>(null as unknown as Auth);
+export const AuthContext = createContext(null as unknown as Auth);
