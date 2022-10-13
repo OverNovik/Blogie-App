@@ -8,8 +8,8 @@ const VerifyScreen: React.FC = () => {
   console.log(authCtx);
   return (
     <View>
-      <Text>11111112</Text>
-      <Button onPress={authCtx.logout}>111</Button>
+      <Text>Verify</Text>
+      <Button onPress={authCtx.logout}>Back</Button>
     </View>
   );
 };
