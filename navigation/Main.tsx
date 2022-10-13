@@ -1,12 +1,37 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthScreens from './AuthScreens';
 import {AuthContext} from '../store/authContext';
 import AuthorizedScreens from './AuthorizedScreens';
+import SplashScreen from 'react-native-splash-screen';
 
 const Main: React.FC = () => {
   const authCtx = useContext(AuthContext);
-  console.log(authCtx);
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const getToken = async () => {
+      const token = await AsyncStorage.getItem('token');
+
+      if (token) {
+        authCtx.authenticate(token);
+      }
+      setIsLogin(true);
+    };
+
+    getToken();
+    SplashScreen.hide();
+  }, [authCtx]);
+
+  useEffect(() => {
+    if (isLogin) {
+      SplashScreen.hide();
+    } else {
+      SplashScreen.show();
+    }
+  }, [isLogin]);
+
   return (
     <NavigationContainer>
       {authCtx.isAuth ? <AuthorizedScreens /> : <AuthScreens />}
