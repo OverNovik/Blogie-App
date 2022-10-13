@@ -5,7 +5,7 @@ import {AuthContext} from '../../store/authContext';
 
 const VerifyScreen: React.FC = () => {
   const authCtx = useContext(AuthContext);
-  console.log(authCtx);
+
   return (
     <View>
       <Text>Verify</Text>
