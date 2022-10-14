@@ -3,12 +3,14 @@ import {View, Text, TextInput, KeyboardTypeOptions} from 'react-native';
 import {styles} from './style';
 
 interface InputProps {
-  label: string;
+  label?: string;
   keyboardType: KeyboardTypeOptions;
   secure: boolean;
   onUpdateValue?: (text: string) => void;
   value: string;
   isInvalid?: boolean;
+  styleProp?: any;
+  length?: number;
 }
 
 const Input = ({
@@ -18,20 +20,23 @@ const Input = ({
   onUpdateValue,
   value,
   isInvalid,
+  styleProp,
+  length,
 }: InputProps) => {
   return (
     <>
       <Text style={[styles.label, isInvalid && styles.labelInvalid]}>
         {label}
       </Text>
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer, styleProp]}>
         <TextInput
-          style={[styles.input, isInvalid && styles.inputInvalid]}
+          style={[styles.input, styleProp, isInvalid && styles.inputInvalid]}
           autoCapitalize="none"
           keyboardType={keyboardType}
           secureTextEntry={secure}
           onChangeText={onUpdateValue}
           value={value}
+          maxLength={length}
         />
       </View>
     </>
