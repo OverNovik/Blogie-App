@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: GlobalStyles.colors.white,
     alignItems: 'center',
+    paddingBottom: 40,
   },
   textContainer: {
     alignItems: 'center',
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: -0.3,
     color: GlobalStyles.colors.gray30,
-    marginTop: '20%',
+    marginTop: '5%',
   },
   description: {
     width: 232,
@@ -35,7 +36,30 @@ export const styles = StyleSheet.create({
     marginTop: 29,
     marginBottom: 39,
   },
-  btn: {
+  topicsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  topicBtn: {
     width: 150,
+    height: 150,
+    backgroundColor: GlobalStyles.colors.white,
+  },
+  text: {
+    fontFamily: 'DM Sans',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 13,
+    color: GlobalStyles.colors.gray20,
+  },
+  pressed: {
+    backgroundColor: GlobalStyles.colors.violet10,
+  },
+  btn: {
+    width: 135,
+  },
+  checkBox: {
+    display: 'none',
   },
 });
