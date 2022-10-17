@@ -44,7 +44,7 @@ const TopicsScreen: React.FC = () => {
                   selectedTopics[item.id] ? styles.pressed : null,
                 ]}
                 onPress={() => toggleTopic(item.id)}>
-                <Image source={item.image} key={Math.random()} />
+                <Image source={item.image} />
                 {'\n'}
                 <Text style={styles.text}>{item.text}</Text>
               </Button>
@@ -59,7 +59,7 @@ const TopicsScreen: React.FC = () => {
                   selectedTopics[item.id] ? styles.pressed : null,
                 ]}
                 onPress={() => toggleTopic(item.id)}>
-                <Image source={item.image} key={Math.random()} />
+                <Image source={item.image} />
                 {'\n'}
                 <Text style={styles.text}>{item.text}</Text>
               </Button>
