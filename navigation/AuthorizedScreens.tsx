@@ -12,6 +12,7 @@ const AuthorizedScreens: React.FC = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="VerifyScreen" component={Screens.VerifyScreen} />
+        <Stack.Screen name="TopicsScreen" component={Screens.TopicsScreen} />
       </Stack.Navigator>
     </>
   );

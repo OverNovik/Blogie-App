@@ -1,15 +1,22 @@
-/* eslint-disable @typescript-eslint/no-shadow */
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import Input from '../../components/Auth/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import {styles} from './style';
 
 const VerifyScreen: React.FC = () => {
-  const [firstInput, setFirstInput] = useState('');
-  const [secondInput, setSecondInput] = useState('');
-  const [thirdInput, setThirdInput] = useState('');
-  const [fourthInput, setFourthInput] = useState('');
+  const navigation = useNavigation<any>();
+  const [firstInput, setFirstInput] = useState<string>('');
+  const [secondInput, setSecondInput] = useState<string>('');
+  const [thirdInput, setThirdInput] = useState<string>('');
+  const [fourthInput, setFourthInput] = useState<string>('');
+
+  const checkingConditions =
+    firstInput === '1' &&
+    secondInput === '1' &&
+    thirdInput === '1' &&
+    fourthInput === '1';
 
   return (
     <View style={styles.container}>
@@ -53,7 +60,18 @@ const VerifyScreen: React.FC = () => {
           length={1}
         />
       </View>
-      <Button styleProp={styles.btn} onPress={() => {}}>
+      <Button
+        styleProp={styles.btn}
+        onPress={() => {
+          if (checkingConditions) {
+            navigation.navigate('TopicsScreen');
+          } else {
+            Alert.alert(
+              'Please check verification code',
+              'Enter 1111 for verification',
+            );
+          }
+        }}>
         Continue
       </Button>
       <Text style={styles.description}>Enter 1111 for verification</Text>

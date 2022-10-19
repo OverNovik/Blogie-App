@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TextInput, KeyboardTypeOptions} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  KeyboardTypeOptions,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {styles} from './style';
 
 interface InputProps {
@@ -9,7 +16,7 @@ interface InputProps {
   onUpdateValue?: (text: string) => void;
   value: string;
   isInvalid?: boolean;
-  styleProp?: any;
+  styleProp?: StyleProp<ViewStyle>;
   length?: number;
 }
 
