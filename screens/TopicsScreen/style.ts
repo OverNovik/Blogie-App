@@ -46,20 +46,26 @@ export const styles = StyleSheet.create({
     height: 150,
     backgroundColor: GlobalStyles.colors.white,
   },
+  topicContent: {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   text: {
     fontFamily: 'DM Sans',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 13,
     color: GlobalStyles.colors.gray20,
+    marginTop: 20,
   },
   pressed: {
     backgroundColor: GlobalStyles.colors.violet10,
+    borderRadius: 15,
   },
   btn: {
     width: 135,
-  },
-  checkBox: {
-    display: 'none',
   },
 });

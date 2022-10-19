@@ -1,12 +1,12 @@
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, StyleProp, Text, View, ViewStyle} from 'react-native';
 import {styles} from './style';
 
 interface Props {
   children: React.ReactNode;
   onPress: () => void;
-  styleProp?: any;
-  effect?: any;
+  styleProp?: StyleProp<ViewStyle>;
+  effect?: StyleProp<ViewStyle>;
 }
 
 const Button: React.FC<Props> = ({children, onPress, styleProp, effect}) => {

@@ -1,6 +1,5 @@
-// import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import Button from '../../components/UI/Button/Button';
 import {
   topicsFirstColumData,
@@ -18,8 +17,9 @@ const TopicsScreen: React.FC = () => {
       [item.id]: false,
     };
   }, {});
-  const [selectedTopics, setSelectedTopics] = useState<any>(topicInitData);
-  // const navigation = useNavigation<any>();
+  const [selectedTopics, setSelectedTopics] = useState<{
+    [key: string]: boolean;
+  }>(topicInitData);
 
   const toggleTopic = (id: number) => {
     setSelectedTopics({...selectedTopics, [id]: !selectedTopics[id]});
@@ -37,32 +37,36 @@ const TopicsScreen: React.FC = () => {
         <View style={styles.topicsContainer}>
           <View>
             {topicsFirstColumData.map(item => (
-              <Button
-                key={item.id}
-                styleProp={[
-                  styles.topicBtn,
-                  selectedTopics[item.id] ? styles.pressed : null,
-                ]}
-                onPress={() => toggleTopic(item.id)}>
-                <Image source={item.image} />
-                {'\n'}
-                <Text style={styles.text}>{item.text}</Text>
-              </Button>
+              <View key={item.id}>
+                <Pressable
+                  onPress={() => toggleTopic(item.id)}
+                  style={[
+                    styles.topicBtn,
+                    selectedTopics[item.id] ? styles.pressed : null,
+                  ]}>
+                  <View style={styles.topicContent}>
+                    <Image source={item.image} />
+                    <Text style={styles.text}>{item.text}</Text>
+                  </View>
+                </Pressable>
+              </View>
             ))}
           </View>
           <View>
             {topicsSecondColumData.map(item => (
-              <Button
-                key={item.id}
-                styleProp={[
-                  styles.topicBtn,
-                  selectedTopics[item.id] ? styles.pressed : null,
-                ]}
-                onPress={() => toggleTopic(item.id)}>
-                <Image source={item.image} />
-                {'\n'}
-                <Text style={styles.text}>{item.text}</Text>
-              </Button>
+              <View key={item.id}>
+                <Pressable
+                  onPress={() => toggleTopic(item.id)}
+                  style={[
+                    styles.topicBtn,
+                    selectedTopics[item.id] ? styles.pressed : null,
+                  ]}>
+                  <View style={styles.topicContent}>
+                    <Image source={item.image} />
+                    <Text style={styles.text}>{item.text}</Text>
+                  </View>
+                </Pressable>
+              </View>
             ))}
           </View>
         </View>
