@@ -12,6 +12,12 @@ const VerifyScreen: React.FC = () => {
   const [thirdInput, setThirdInput] = useState<string>('');
   const [fourthInput, setFourthInput] = useState<string>('');
 
+  const checkingConditions =
+    firstInput === '1' &&
+    secondInput === '1' &&
+    thirdInput === '1' &&
+    fourthInput === '1';
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -57,12 +63,7 @@ const VerifyScreen: React.FC = () => {
       <Button
         styleProp={styles.btn}
         onPress={() => {
-          if (
-            firstInput === '1' &&
-            secondInput === '1' &&
-            thirdInput === '1' &&
-            fourthInput === '1'
-          ) {
+          if (checkingConditions) {
             navigation.navigate('TopicsScreen');
           } else {
             Alert.alert(
