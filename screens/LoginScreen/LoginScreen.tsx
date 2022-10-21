@@ -9,6 +9,7 @@ import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import {login} from '../../util/auth';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import {AuthContext} from '../../store/authContext';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 interface loginProps {
   email: string;
@@ -38,7 +39,7 @@ const LoginScreen: React.FC = () => {
     return <LoadingOverlay />;
   }
   return (
-    <>
+    <KeyboardAwareScrollView>
       <View style={styles.contentContainer}>
         <Image source={require('../../assets/logo.png')} style={styles.image} />
         <AuthContent isLogin={true} onAuthenticate={loginHandler}>
@@ -68,7 +69,7 @@ const LoginScreen: React.FC = () => {
           </Button>
         </View>
       </View>
-    </>
+    </KeyboardAwareScrollView>
   );
 };
 
