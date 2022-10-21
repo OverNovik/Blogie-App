@@ -6,11 +6,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '20%',
   },
   itemContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '20%',
   },
   imagesContainer: {
     flexDirection: 'row',
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   text: {
     marginLeft: 5,
     width: 322,
-    height: 63,
+    height: 65,
     fontFamily: 'DM Sans',
     fontWeight: '500',
     fontStyle: 'normal',
