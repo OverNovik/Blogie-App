@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Text, View, Image, Alert} from 'react-native';
+import {Text, View, Image, Alert, KeyboardAvoidingView} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import Button from '../../components/UI/Button/Button';
 import {GlobalStyles} from '../../constants/style';
@@ -9,7 +9,6 @@ import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import {login} from '../../util/auth';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import {AuthContext} from '../../store/authContext';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {AuthNativeStackProps} from '../../navigation/types';
 
 interface loginProps {
@@ -42,8 +41,8 @@ const LoginScreen: React.FC = () => {
     return <LoadingOverlay />;
   }
   return (
-    <KeyboardAwareScrollView>
-      <View style={styles.contentContainer}>
+    <KeyboardAvoidingView style={styles.contentContainer} behavior="position">
+      <View>
         <Image source={require('../../assets/logo.png')} style={styles.image} />
         <AuthContent isLogin={true} onAuthenticate={loginHandler}>
           <View style={styles.utilsContainer}>
@@ -72,7 +71,7 @@ const LoginScreen: React.FC = () => {
           </Button>
         </View>
       </View>
-    </KeyboardAwareScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
