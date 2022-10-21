@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import Button from '../../components/UI/Button/Button';
@@ -8,6 +9,7 @@ import {
 import {styles} from './style';
 
 const TopicsScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
   const topicInitData = [
     ...topicsFirstColumData,
     ...topicsSecondColumData,
@@ -70,7 +72,9 @@ const TopicsScreen: React.FC = () => {
             ))}
           </View>
         </View>
-        <Button styleProp={styles.btn} onPress={() => {}}>
+        <Button
+          styleProp={styles.btn}
+          onPress={() => navigation.navigate('MainTabs')}>
           Continue
         </Button>
       </View>
