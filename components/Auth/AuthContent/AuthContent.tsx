@@ -29,9 +29,6 @@ const AuthContent = ({isLogin, onAuthenticate, children}: AuthContentProps) => {
     confirmPassword: false,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const switchAuthModeHandler = () => {};
-
   const submitHandler = (credentials: Credentials) => {
     let {email, userName, password, confirmPassword} = credentials;
 

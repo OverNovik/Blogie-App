@@ -6,7 +6,7 @@ import Button from '../../components/UI/Button/Button';
 import {styles} from './style';
 
 const ForgotPasswordScreen: React.FC = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState<string>('');
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
