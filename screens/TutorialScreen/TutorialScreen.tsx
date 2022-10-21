@@ -1,21 +1,27 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React, {useState, useRef, useEffect} from 'react';
 import {Text, View, Dimensions, Image} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Button from '../../components/UI/Button/Button';
 import {Data, data} from '../../data/carouselData';
+import {AuthNativeStackProps} from '../../navigation/types';
 import {styles} from './style';
 
-interface renderData {
+interface RenderData {
   item: Data;
   index?: number;
 }
 
+type TutorialNavigationProps = NavigationProp<
+  AuthNativeStackProps,
+  'TutorialScreen'
+>;
+
 export const SLIDER_WIDTH = Dimensions.get('window').width + 30;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 
-const renderItem = ({item}: renderData) => {
+const renderItem = ({item}: RenderData) => {
   const images1 = item.firstImages;
   const images2 = item.secondImages;
   return (
@@ -41,7 +47,7 @@ const renderItem = ({item}: renderData) => {
 const TutorialScreen: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
   const isCarousel = useRef<Carousel<Data> | null>(null);
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<TutorialNavigationProps>();
 
   useEffect(() => {
     const interval = setInterval(() => {

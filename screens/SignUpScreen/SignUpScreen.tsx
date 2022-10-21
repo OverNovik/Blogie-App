@@ -13,7 +13,7 @@ interface signUpProps {
 }
 
 const SignUpScreen: React.FC = () => {
-  const [isAuth, setAuth] = useState(false);
+  const [isAuth, setAuth] = useState<boolean>(false);
   const authCtx = useContext(AuthContext);
 
   const signUpHandler = async ({email, password}: signUpProps) => {

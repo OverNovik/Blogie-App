@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import Button from '../../components/UI/Button/Button';
@@ -6,10 +6,16 @@ import {
   topicsFirstColumData,
   topicsSecondColumData,
 } from '../../data/topicsData';
+import {AuthorizedNativeStackProps} from '../../navigation/types';
 import {styles} from './style';
 
+type TopicsNavigationProps = NavigationProp<
+  AuthorizedNativeStackProps,
+  'TopicsScreen'
+>;
+
 const TopicsScreen: React.FC = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<TopicsNavigationProps>();
   const topicInitData = [
     ...topicsFirstColumData,
     ...topicsSecondColumData,

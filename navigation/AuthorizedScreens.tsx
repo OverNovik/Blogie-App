@@ -2,8 +2,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import * as Screens from '../screens';
 import MainTabs from './MainTabs';
+import {AuthorizedNativeStackProps} from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthorizedNativeStackProps>();
 
 const AuthorizedScreens: React.FC = () => {
   return (

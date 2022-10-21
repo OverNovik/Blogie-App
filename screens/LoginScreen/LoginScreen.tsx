@@ -4,20 +4,23 @@ import CheckBox from '@react-native-community/checkbox';
 import Button from '../../components/UI/Button/Button';
 import {GlobalStyles} from '../../constants/style';
 import {styles} from './style';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import AuthContent from '../../components/Auth/AuthContent/AuthContent';
 import {login} from '../../util/auth';
 import LoadingOverlay from '../../components/UI/LoadingOverlay/LoadingOverlay';
 import {AuthContext} from '../../store/authContext';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {AuthNativeStackProps} from '../../navigation/types';
 
 interface loginProps {
   email: string;
   password: string;
 }
 
+type LoginNavigationProps = NavigationProp<AuthNativeStackProps, 'LoginScreen'>;
+
 const LoginScreen: React.FC = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<LoginNavigationProps>();
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean | undefined>(
     false,
   );

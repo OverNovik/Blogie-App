@@ -2,8 +2,9 @@ import React from 'react';
 import * as Screens from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabIcon from '../components/UI/TabIcon/TabIcon';
+import {BottomTabProps} from './types';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabProps>();
 
 const MainTabs: React.FC = () => {
   return (
