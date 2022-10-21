@@ -41,6 +41,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  column: {
+    marginHorizontal: 13.5,
+  },
   topicBtn: {
     width: 150,
     height: 150,

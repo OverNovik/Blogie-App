@@ -43,7 +43,7 @@ const TopicsScreen: React.FC = () => {
           </Text>
         </View>
         <View style={styles.topicsContainer}>
-          <View>
+          <View style={styles.column}>
             {topicsFirstColumData.map(item => (
               <View key={item.id}>
                 <Pressable
@@ -60,7 +60,7 @@ const TopicsScreen: React.FC = () => {
               </View>
             ))}
           </View>
-          <View>
+          <View style={styles.column}>
             {topicsSecondColumData.map(item => (
               <View key={item.id}>
                 <Pressable
