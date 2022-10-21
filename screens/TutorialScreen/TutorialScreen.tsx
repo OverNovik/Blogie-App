@@ -4,13 +4,18 @@ import React, {useState, useRef, useEffect} from 'react';
 import {Text, View, Dimensions, Image} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Button from '../../components/UI/Button/Button';
-import {data} from '../../data/carouselData';
+import {Data, data} from '../../data/carouselData';
 import {styles} from './style';
+
+interface renderData {
+  item: Data;
+  index?: number;
+}
 
 export const SLIDER_WIDTH = Dimensions.get('window').width + 30;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 
-const renderItem = ({item}: any) => {
+const renderItem = ({item}: renderData) => {
   const images1 = item.firstImages;
   const images2 = item.secondImages;
   return (
@@ -35,7 +40,7 @@ const renderItem = ({item}: any) => {
 
 const TutorialScreen: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
-  const isCarousel = useRef<any>(null);
+  const isCarousel = useRef<Carousel<Data> | null>(null);
   const navigation = useNavigation<any>();
 
   useEffect(() => {
