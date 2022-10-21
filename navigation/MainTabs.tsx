@@ -3,6 +3,7 @@ import * as Screens from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabIcon from '../components/UI/TabIcon/TabIcon';
 import {BottomTabProps} from './types';
+import {styles} from './style';
 
 const Tab = createBottomTabNavigator<BottomTabProps>();
 
@@ -21,6 +22,7 @@ const MainTabs: React.FC = () => {
             <TabIcon
               source={require('../assets/icons/Home.png')}
               focused={focused}
+              styleImage={styles.focusTab}
             />
           ),
         }}
@@ -33,6 +35,21 @@ const MainTabs: React.FC = () => {
             <TabIcon
               source={require('../assets/icons/Notification.png')}
               focused={focused}
+              styleImage={styles.focusTab}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="AddStoryScreen"
+        component={Screens.AddStoryScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <TabIcon
+              source={require('../assets/icons/Plus.png')}
+              focused={focused}
+              styleContainer={styles.addStoryBtn}
+              styleImage={styles.focusAddStory}
             />
           ),
         }}
@@ -45,6 +62,7 @@ const MainTabs: React.FC = () => {
             <TabIcon
               source={require('../assets/icons/Profile.png')}
               focused={focused}
+              styleImage={styles.focusTab}
             />
           ),
         }}
@@ -57,6 +75,7 @@ const MainTabs: React.FC = () => {
             <TabIcon
               source={require('../assets/icons/Read.png')}
               focused={focused}
+              styleImage={styles.focusTab}
             />
           ),
         }}

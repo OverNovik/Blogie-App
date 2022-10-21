@@ -16,4 +16,5 @@ export type BottomTabProps = {
   NotificationScreen: undefined;
   ProfileScreen: undefined;
   ReadingListScreen: undefined;
+  AddStoryScreen: undefined;
 };
