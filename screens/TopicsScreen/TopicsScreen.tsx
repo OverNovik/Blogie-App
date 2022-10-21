@@ -25,12 +25,21 @@ const TopicsScreen: React.FC = () => {
       [item.id]: false,
     };
   }, {});
+
   const [selectedTopics, setSelectedTopics] = useState<{
     [key: string]: boolean;
   }>(topicInitData);
 
   const toggleTopic = (id: number) => {
-    setSelectedTopics({...selectedTopics, [id]: !selectedTopics[id]});
+    const count = Object.values(selectedTopics).filter(
+      item => item === true,
+    ).length;
+
+    if (count < 3) {
+      setSelectedTopics({...selectedTopics, [id]: !selectedTopics[id]});
+    } else {
+      setSelectedTopics({...selectedTopics, [id]: false});
+    }
   };
 
   return (
