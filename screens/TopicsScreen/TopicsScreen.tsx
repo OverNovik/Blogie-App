@@ -1,3 +1,4 @@
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import Button from '../../components/UI/Button/Button';
@@ -5,9 +6,16 @@ import {
   topicsFirstColumData,
   topicsSecondColumData,
 } from '../../data/topicsData';
+import {AuthorizedNativeStackProps} from '../../navigation/types';
 import {styles} from './style';
 
+type TopicsNavigationProps = NavigationProp<
+  AuthorizedNativeStackProps,
+  'TopicsScreen'
+>;
+
 const TopicsScreen: React.FC = () => {
+  const navigation = useNavigation<TopicsNavigationProps>();
   const topicInitData = [
     ...topicsFirstColumData,
     ...topicsSecondColumData,
@@ -17,12 +25,21 @@ const TopicsScreen: React.FC = () => {
       [item.id]: false,
     };
   }, {});
+
   const [selectedTopics, setSelectedTopics] = useState<{
     [key: string]: boolean;
   }>(topicInitData);
 
   const toggleTopic = (id: number) => {
-    setSelectedTopics({...selectedTopics, [id]: !selectedTopics[id]});
+    const count = Object.values(selectedTopics).filter(
+      item => item === true,
+    ).length;
+
+    if (count < 3) {
+      setSelectedTopics({...selectedTopics, [id]: !selectedTopics[id]});
+    } else {
+      setSelectedTopics({...selectedTopics, [id]: false});
+    }
   };
 
   return (
@@ -35,7 +52,7 @@ const TopicsScreen: React.FC = () => {
           </Text>
         </View>
         <View style={styles.topicsContainer}>
-          <View>
+          <View style={styles.column}>
             {topicsFirstColumData.map(item => (
               <View key={item.id}>
                 <Pressable
@@ -52,7 +69,7 @@ const TopicsScreen: React.FC = () => {
               </View>
             ))}
           </View>
-          <View>
+          <View style={styles.column}>
             {topicsSecondColumData.map(item => (
               <View key={item.id}>
                 <Pressable
@@ -70,7 +87,9 @@ const TopicsScreen: React.FC = () => {
             ))}
           </View>
         </View>
-        <Button styleProp={styles.btn} onPress={() => {}}>
+        <Button
+          styleProp={styles.btn}
+          onPress={() => navigation.navigate('MainTabs')}>
           Continue
         </Button>
       </View>

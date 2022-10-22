@@ -1,12 +1,18 @@
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import Input from '../../components/Auth/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import {AuthorizedNativeStackProps} from '../../navigation/types';
 import {styles} from './style';
 
+type VerifyNavigationProps = NavigationProp<
+  AuthorizedNativeStackProps,
+  'VerifyScreen'
+>;
+
 const VerifyScreen: React.FC = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<VerifyNavigationProps>();
   const [firstInput, setFirstInput] = useState<string>('');
   const [secondInput, setSecondInput] = useState<string>('');
   const [thirdInput, setThirdInput] = useState<string>('');

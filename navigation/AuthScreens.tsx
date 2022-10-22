@@ -2,8 +2,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import * as Screens from '../screens';
+import {AuthNativeStackProps} from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthNativeStackProps>();
 
 const AuthScreens: React.FC = () => {
   useEffect(() => {
