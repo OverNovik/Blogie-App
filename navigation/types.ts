@@ -2,6 +2,7 @@ export type AuthorizedNativeStackProps = {
   VerifyScreen: undefined;
   TopicsScreen: undefined;
   MainTabs: undefined;
+  AddStoryScreen: undefined;
 };
 
 export type AuthNativeStackProps = {
