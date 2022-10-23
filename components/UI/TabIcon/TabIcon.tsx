@@ -10,8 +10,8 @@ import {
 
 interface TabIconProps {
   source: ImageRequireSource;
-  focused: boolean;
-  styleImage: StyleProp<ImageStyle>;
+  focused?: boolean;
+  styleImage?: StyleProp<ImageStyle>;
   styleContainer?: StyleProp<ViewStyle>;
 }
 

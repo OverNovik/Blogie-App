@@ -11,13 +11,17 @@ export const styles = StyleSheet.create({
     borderColor: GlobalStyles.colors.gray10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 35,
-  },
-  focusAddStory: {
-    backgroundColor: GlobalStyles.colors.white,
-    tintColor: GlobalStyles.colors.violet20,
+    marginVertical: -25,
   },
   focusTab: {
     tintColor: GlobalStyles.colors.violet20,
+  },
+  backBtn: {
+    backgroundColor: GlobalStyles.colors.violet10,
+    width: 30,
+    height: 30,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
