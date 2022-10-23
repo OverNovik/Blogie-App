@@ -1,13 +1,21 @@
 import React from 'react';
+import {View, Pressable} from 'react-native';
 import * as Screens from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabIcon from '../components/UI/TabIcon/TabIcon';
-import {BottomTabProps} from './types';
+import {AuthorizedNativeStackProps, BottomTabProps} from './types';
 import {styles} from './style';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator<BottomTabProps>();
 
+type BottomTabNavigationProps = NavigationProp<
+  AuthorizedNativeStackProps,
+  'MainTabs'
+>;
+
 const MainTabs: React.FC = () => {
+  const navigation = useNavigation<BottomTabNavigationProps>();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -44,13 +52,14 @@ const MainTabs: React.FC = () => {
         name="AddStoryScreen"
         component={Screens.AddStoryScreen}
         options={{
-          tabBarIcon: ({focused}) => (
-            <TabIcon
-              source={require('../assets/icons/Plus.png')}
-              focused={focused}
-              styleContainer={styles.addStoryBtn}
-              styleImage={styles.focusAddStory}
-            />
+          tabBarButton: () => (
+            <View style={styles.addStoryBtn}>
+              <Pressable onPress={() => navigation.navigate('AddStoryScreen')}>
+                <View>
+                  <TabIcon source={require('../assets/icons/Plus.png')} />
+                </View>
+              </Pressable>
+            </View>
           ),
         }}
       />
