@@ -16,12 +16,4 @@ export const styles = StyleSheet.create({
   focusTab: {
     tintColor: GlobalStyles.colors.violet20,
   },
-  backBtn: {
-    backgroundColor: GlobalStyles.colors.violet10,
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });

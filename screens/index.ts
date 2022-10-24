@@ -9,3 +9,4 @@ export {default as ReadingListScreen} from './ReadingListScreen';
 export {default as ProfileScreen} from './ProfileScreen';
 export {default as NotificationScreen} from './NotificationScreen';
 export {default as AddStoryScreen} from './AddStoryScreen';
+export {default as PostStoryScreen} from './PostStoryScreen';

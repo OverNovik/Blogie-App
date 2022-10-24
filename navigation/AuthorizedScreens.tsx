@@ -1,18 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Pressable, View} from 'react-native';
+import BackButton from '../components/UI/BackButton/BackButton';
 import ScreenSwitcher from '../components/UI/ScreenSwitcher/ScreenSwitcher';
-import TabIcon from '../components/UI/TabIcon/TabIcon';
 import * as Screens from '../screens';
 import MainTabs from './MainTabs';
-import {styles} from './style';
 import {AuthorizedNativeStackProps} from './types';
 
 const Stack = createNativeStackNavigator<AuthorizedNativeStackProps>();
 
 const AuthorizedScreens: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <>
       <Stack.Navigator
@@ -27,20 +25,27 @@ const AuthorizedScreens: React.FC = () => {
           component={Screens.AddStoryScreen}
           options={{
             headerShown: true,
-            headerTitleAlign: 'center',
+            title: '',
             headerLeft: () => (
-              <View style={styles.backBtn}>
-                <Pressable onPress={() => navigation.goBack()}>
-                  <View>
-                    <TabIcon source={require('../assets/icons/Fill.png')} />
-                  </View>
-                </Pressable>
-              </View>
+              <BackButton onPress={() => navigation.goBack()} />
             ),
             headerRight: () => (
-              <ScreenSwitcher disabledDraft={true} onPressNext={() => {}} />
+              <ScreenSwitcher
+                disabledDraft={true}
+                onPressNext={() => navigation.navigate('PostStoryScreen')}
+              />
             ),
+          }}
+        />
+        <Stack.Screen
+          name="PostStoryScreen"
+          component={Screens.PostStoryScreen}
+          options={{
+            headerShown: true,
             title: '',
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
           }}
         />
       </Stack.Navigator>
