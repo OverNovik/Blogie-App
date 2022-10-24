@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {Pressable, View} from 'react-native';
+import ScreenSwitcher from '../components/UI/ScreenSwitcher/ScreenSwitcher';
 import TabIcon from '../components/UI/TabIcon/TabIcon';
 import * as Screens from '../screens';
 import MainTabs from './MainTabs';
@@ -35,6 +36,9 @@ const AuthorizedScreens: React.FC = () => {
                   </View>
                 </Pressable>
               </View>
+            ),
+            headerRight: () => (
+              <ScreenSwitcher disabledDraft={true} onPressNext={() => {}} />
             ),
             title: '',
           }}
