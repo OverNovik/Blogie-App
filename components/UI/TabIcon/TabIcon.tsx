@@ -13,6 +13,7 @@ interface TabIconProps {
   focused?: boolean;
   styleImage?: StyleProp<ImageStyle>;
   styleContainer?: StyleProp<ViewStyle>;
+  style?: StyleProp<ImageStyle>;
 }
 
 const TabIcon = ({
@@ -20,10 +21,11 @@ const TabIcon = ({
   focused,
   styleImage,
   styleContainer,
+  style,
 }: TabIconProps) => {
   return (
     <View style={[styleContainer]}>
-      <Image source={source} style={focused ? styleImage : null} />
+      <Image source={source} style={[style, focused ? styleImage : null]} />
     </View>
   );
 };

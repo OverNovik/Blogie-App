@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    backgroundColor: GlobalStyles.colors.background,
   },
   inputContainer: {
     backgroundColor: GlobalStyles.colors.white10,

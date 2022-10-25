@@ -10,5 +10,6 @@ export const GlobalStyles = {
     error10: '#FA8072',
     error20: '#FF0000',
     black: '#3E3E3E',
+    background: '#FAFAFA',
   },
 };

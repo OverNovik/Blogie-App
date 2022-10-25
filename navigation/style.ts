@@ -16,4 +16,9 @@ export const styles = StyleSheet.create({
   focusTab: {
     tintColor: GlobalStyles.colors.violet20,
   },
+  headerBorder: {
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+  },
 });
