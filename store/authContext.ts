@@ -1,9 +1,20 @@
 import {createContext} from 'react';
 
+export interface UserData {
+  displayName: string;
+  email: string;
+  expiresIn: string;
+  idToken: string;
+  kind: string;
+  localId: string;
+  refreshToken: string;
+  registered: boolean;
+}
+
 interface Auth {
-  token: string | null;
+  userData: UserData | null | undefined;
   isAuth: boolean;
-  authenticate: (token: string) => void;
+  authenticate: (authUserData: UserData) => void;
   logout: () => void;
 }
 

@@ -7,14 +7,16 @@ export const authenticate = async (
   mode: string,
   email: string,
   password: string,
+  username?: string,
 ) => {
   const response = await axios.post(`${BASE_URL}${mode}?key=${API_KEY}`, {
     email: email,
+    username: username,
     password: password,
     returnSecureToken: true,
   });
 
-  return response.data.idToken;
+  return response.data;
 };
 
 export const createUser = (email: string, password: string) => {

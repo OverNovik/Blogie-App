@@ -39,7 +39,7 @@ const AuthorizedScreens: React.FC = () => {
             ),
             headerRight: () => (
               <ScreenSwitcher
-                disabledDraft={true}
+                isDisabledDraft={true}
                 onPressNext={() => navigation.navigate('PostStoryScreen')}
               />
             ),
