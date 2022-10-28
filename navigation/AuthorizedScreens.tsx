@@ -1,17 +1,24 @@
 import {useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 import React from 'react';
-import {Pressable, View} from 'react-native';
-import TabIcon from '../components/UI/TabIcon/TabIcon';
+import BackButton from '../components/UI/BackButton/BackButton';
+import ScreenSwitcher from '../components/UI/ScreenSwitcher/ScreenSwitcher';
 import * as Screens from '../screens';
 import MainTabs from './MainTabs';
-import {styles} from './style';
 import {AuthorizedNativeStackProps} from './types';
+
+type StackParamPropList = {
+  PostStoryScreen: {screen: string; params: {}} | undefined;
+};
 
 const Stack = createNativeStackNavigator<AuthorizedNativeStackProps>();
 
 const AuthorizedScreens: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<StackParamPropList>>();
   return (
     <>
       <Stack.Navigator
@@ -26,17 +33,27 @@ const AuthorizedScreens: React.FC = () => {
           component={Screens.AddStoryScreen}
           options={{
             headerShown: true,
-            headerTitleAlign: 'center',
-            headerLeft: () => (
-              <View style={styles.backBtn}>
-                <Pressable onPress={() => navigation.goBack()}>
-                  <View>
-                    <TabIcon source={require('../assets/icons/Fill.png')} />
-                  </View>
-                </Pressable>
-              </View>
-            ),
             title: '',
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
+            headerRight: () => (
+              <ScreenSwitcher
+                disabledDraft={true}
+                onPressNext={() => navigation.navigate('PostStoryScreen')}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="PostStoryScreen"
+          component={Screens.PostStoryScreen}
+          options={{
+            headerShown: true,
+            title: '',
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
           }}
         />
       </Stack.Navigator>
