@@ -18,6 +18,7 @@ interface InputProps {
   isInvalid?: boolean;
   styleProp?: StyleProp<ViewStyle>;
   length?: number;
+  placeholder?: string;
 }
 
 const Input = ({
@@ -29,6 +30,7 @@ const Input = ({
   isInvalid,
   styleProp,
   length,
+  placeholder,
 }: InputProps) => {
   return (
     <>
@@ -38,6 +40,7 @@ const Input = ({
       <View style={[styles.inputContainer, styleProp]}>
         <TextInput
           style={[styles.input, styleProp, isInvalid && styles.inputInvalid]}
+          placeholder={placeholder}
           autoCapitalize="none"
           keyboardType={keyboardType}
           secureTextEntry={secure}
