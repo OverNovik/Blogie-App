@@ -4,6 +4,7 @@ export type AuthorizedNativeStackProps = {
   MainTabs: undefined;
   AddStoryScreen: undefined;
   PostStoryScreen: undefined;
+  StoryScreen: undefined;
 };
 
 export type AuthNativeStackProps = {

@@ -56,6 +56,17 @@ const AuthorizedScreens: React.FC = () => {
             ),
           }}
         />
+        <Stack.Screen
+          name="StoryScreen"
+          component={Screens.StoryScreen}
+          options={{
+            headerShown: true,
+            title: '',
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
+          }}
+        />
       </Stack.Navigator>
     </>
   );
