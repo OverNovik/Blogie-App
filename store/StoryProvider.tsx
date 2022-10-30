@@ -8,10 +8,24 @@ interface StoryProviderProps {
 const StoryProvider = ({children}: StoryProviderProps) => {
   const [storyText, setStoryText] = useState('');
   const [storyTitle, setStoryTitle] = useState('');
+  const [storyImage, setStoryImage] = useState('');
+  const [storyViews, setStoryViews] = useState(0);
+  const [storyLikes, setStoryLikes] = useState(0);
 
   return (
     <StoryContext.Provider
-      value={{storyText, setStoryText, storyTitle, setStoryTitle}}>
+      value={{
+        storyText,
+        setStoryText,
+        storyTitle,
+        setStoryTitle,
+        storyImage,
+        setStoryImage,
+        storyViews,
+        setStoryViews,
+        storyLikes,
+        setStoryLikes,
+      }}>
       {children}
     </StoryContext.Provider>
   );
