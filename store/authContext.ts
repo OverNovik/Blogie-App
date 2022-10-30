@@ -12,7 +12,7 @@ export interface UserData {
 }
 
 interface Auth {
-  userData: UserData | null | undefined;
+  userData: UserData | null;
   isAuth: boolean;
   authenticate: (authUserData: UserData) => void;
   logout: () => void;

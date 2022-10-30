@@ -4,18 +4,18 @@ import AuthForm from '../AuthForm/AuthForm';
 
 interface User {
   email: string;
-  userName: string;
+  username: string;
   password: string;
 }
 
 interface AuthContentProps {
   isLogin: boolean;
-  onAuthenticate: ({email, userName, password}: User) => void;
+  onAuthenticate: ({email, username, password}: User) => void;
   children: React.ReactNode;
 }
 
 interface Credentials {
-  userName: string;
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -24,19 +24,19 @@ interface Credentials {
 const AuthContent = ({isLogin, onAuthenticate, children}: AuthContentProps) => {
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
-    userName: false,
+    username: false,
     password: false,
     confirmPassword: false,
   });
 
   const submitHandler = (credentials: Credentials) => {
-    let {email, userName, password, confirmPassword} = credentials;
+    let {email, username, password, confirmPassword} = credentials;
 
     email = email.trim();
     password = password.trim();
 
     const emailIsValid = email.includes('@');
-    const userNameIsValid = userName.length > 1;
+    const userNameIsValid = username.length > 1;
     const passwordIsValid = password.length > 6;
     const passwordsAreEqual = password === confirmPassword;
 
@@ -48,13 +48,13 @@ const AuthContent = ({isLogin, onAuthenticate, children}: AuthContentProps) => {
       Alert.alert('Invalid input', 'Please check the entered data');
       setCredentialsInvalid({
         email: !emailIsValid,
-        userName: !userNameIsValid,
+        username: !userNameIsValid,
         password: !passwordIsValid,
         confirmPassword: !passwordIsValid || !passwordsAreEqual,
       });
       return;
     }
-    onAuthenticate({email, userName, password});
+    onAuthenticate({email, username, password});
   };
 
   return (

@@ -7,10 +7,9 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({children}: AuthProviderProps) => {
-  const [userData, setUserData] = useState<UserData | null>();
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   const authenticate = (authUserData: UserData) => {
-    console.trace();
     setUserData(authUserData);
     AsyncStorage.setItem('userData', JSON.stringify(authUserData));
   };

@@ -5,14 +5,14 @@ import Input from '../Input/Input';
 import {styles} from './style';
 
 interface Credentials {
-  userName: string;
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 interface CredentialsInvalid {
-  userName: boolean;
+  username: boolean;
   email: boolean;
   password: boolean;
   confirmPassword: boolean;
@@ -38,7 +38,7 @@ const AuthForm = ({
 
   const {
     email: emailIsInvalid,
-    userName: userNameIsInvalid,
+    username: userNameIsInvalid,
     password: passwordIsInvalid,
     confirmPassword: passwordsDontMatch,
   } = credentialsInvalid;
@@ -46,7 +46,7 @@ const AuthForm = ({
   const submitHandler = () => {
     onSubmit({
       email: enteredEmail,
-      userName: enteredUserName,
+      username: enteredUserName,
       password: enteredPassword,
       confirmPassword: enteredConfirmPassword,
     });

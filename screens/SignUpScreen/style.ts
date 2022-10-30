@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: GlobalStyles.colors.white,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     marginTop: '13%',
