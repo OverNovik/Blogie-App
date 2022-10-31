@@ -7,9 +7,12 @@ export const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.white,
     alignItems: 'center',
   },
+  container: {
+    alignItems: 'center',
+  },
   image: {
     marginTop: '13%',
-    marginBottom: 41.27,
+    marginBottom: 65,
   },
   utilsContainer: {
     flexDirection: 'row',

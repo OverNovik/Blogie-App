@@ -1,13 +1,44 @@
-import React, {useState} from 'react';
+import {ref, set} from '@firebase/database';
+import {uuidv4} from '@firebase/util';
+import {NavigationProp, useNavigation} from '@react-navigation/core';
+import React, {useState, useContext} from 'react';
 import {Pressable, Text, View, Switch, Image} from 'react-native';
 import Input from '../../components/Auth/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import TabIcon from '../../components/UI/TabIcon/TabIcon';
+import {db} from '../../config/firebaseConfig';
 import {GlobalStyles} from '../../constants/style';
+import {AuthorizedNativeStackProps} from '../../navigation/types';
+import {AuthContext} from '../../store/authContext';
+import {StoryContext} from '../../store/storyContext';
 import {styles} from './style';
 
+type PostStoryNavigationProps = NavigationProp<
+  AuthorizedNativeStackProps,
+  'PostStoryScreen'
+>;
+
 const PostStoryScreen: React.FC = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabledFacebook, setIsEnabledFacebook] = useState(false);
+  const [isEnabledTwitter, setIsEnabledTwitter] = useState(false);
+  const authCtx = useContext(AuthContext);
+  const {storyText, storyTitle, setStoryTitle, storyLikes, storyViews} =
+    useContext(StoryContext);
+  const navigation = useNavigation<PostStoryNavigationProps>();
+
+  const create = async () => {
+    const userData = authCtx.userData;
+    const id = uuidv4();
+    await set(ref(db, `posts/${userData?.email.split('@')[0]}/${id}/`), {
+      id: id,
+      username: userData?.email.split('@')[0],
+      text: storyText,
+      title: storyTitle,
+      likes: storyLikes,
+      views: storyViews,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -23,7 +54,8 @@ const PostStoryScreen: React.FC = () => {
           label="Title"
           keyboardType={'default'}
           secure={false}
-          value={''}
+          value={storyTitle}
+          onUpdateValue={setStoryTitle}
         />
         <Input
           label="Tags"
@@ -50,9 +82,9 @@ const PostStoryScreen: React.FC = () => {
               trackColor={{true: GlobalStyles.colors.violet20}}
               thumbColor={GlobalStyles.colors.white}
               onValueChange={() =>
-                setIsEnabled(previousState => !previousState)
+                setIsEnabledFacebook(previousState => !previousState)
               }
-              value={isEnabled}
+              value={isEnabledFacebook}
             />
           </View>
         </View>
@@ -72,14 +104,20 @@ const PostStoryScreen: React.FC = () => {
               trackColor={{true: GlobalStyles.colors.violet20}}
               thumbColor={GlobalStyles.colors.white}
               onValueChange={() =>
-                setIsEnabled(previousState => !previousState)
+                setIsEnabledTwitter(previousState => !previousState)
               }
-              value={isEnabled}
+              value={isEnabledTwitter}
             />
           </View>
         </View>
       </View>
-      <Button onPress={() => {}}>Post</Button>
+      <Button
+        onPress={() => {
+          create();
+          navigation.navigate('MainTabs');
+        }}>
+        Post
+      </Button>
     </View>
   );
 };

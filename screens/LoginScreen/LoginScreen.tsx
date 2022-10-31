@@ -29,8 +29,8 @@ const LoginScreen: React.FC = () => {
   const loginHandler = async ({email, password}: loginProps) => {
     setAuth(true);
     try {
-      const token = await login(email, password);
-      authCtx.authenticate(token);
+      const userData = await login(email, password);
+      authCtx.authenticate(userData);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
       setAuth(false);
@@ -42,7 +42,7 @@ const LoginScreen: React.FC = () => {
   }
   return (
     <KeyboardAvoidingView style={styles.contentContainer} behavior="position">
-      <View>
+      <View style={styles.container}>
         <Image source={require('../../assets/logo.png')} style={styles.image} />
         <AuthContent isLogin={true} onAuthenticate={loginHandler}>
           <View style={styles.utilsContainer}>

@@ -19,8 +19,8 @@ const SignUpScreen: React.FC = () => {
   const signUpHandler = async ({email, password}: signUpProps) => {
     setAuth(true);
     try {
-      const token = await createUser(email, password);
-      authCtx.authenticate(token);
+      const userData = await createUser(email, password);
+      authCtx.authenticate(userData);
     } catch (e) {
       Alert.alert('Authorization Error.', 'Please check the entered data.');
       setAuth(false);
@@ -32,16 +32,16 @@ const SignUpScreen: React.FC = () => {
   }
 
   return (
-    <KeyboardAwareScrollView>
-      <View style={styles.container}>
-        <Image source={require('../../assets/logo.png')} style={styles.image} />
+    <View style={styles.container}>
+      <Image source={require('../../assets/logo.png')} style={styles.image} />
+      <KeyboardAwareScrollView>
         <AuthContent
           isLogin={false}
           onAuthenticate={signUpHandler}
           children={undefined}
         />
-      </View>
-    </KeyboardAwareScrollView>
+      </KeyboardAwareScrollView>
+    </View>
   );
 };
 

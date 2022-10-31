@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, TextInput} from 'react-native';
+import {StoryContext} from '../../store/storyContext';
 import {styles} from './style';
 
 const AddStoryScreen: React.FC = () => {
-  const [story, setStory] = useState('');
+  const {storyText, setStoryText} = useContext(StoryContext);
   const [height, setHeight] = useState(0);
 
   return (
@@ -12,8 +13,8 @@ const AddStoryScreen: React.FC = () => {
         <TextInput
           autoFocus={true}
           placeholder="Write your story"
-          onChangeText={setStory}
-          value={story}
+          onChangeText={setStoryText}
+          value={storyText}
           multiline
           onContentSizeChange={event => {
             setHeight(event.nativeEvent.contentSize.height);

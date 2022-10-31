@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,17 +13,17 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     const getToken = async () => {
-      const token = await AsyncStorage.getItem('token');
+      const userData = await AsyncStorage.getItem('userData');
 
-      if (token) {
-        authCtx.authenticate(token);
+      if (userData) {
+        authCtx.authenticate(JSON.parse(userData));
       }
       setIsLogin(true);
     };
 
     getToken();
     SplashScreen.hide();
-  }, [authCtx]);
+  }, []);
 
   useEffect(() => {
     if (isLogin) {

@@ -39,7 +39,7 @@ const AuthorizedScreens: React.FC = () => {
             ),
             headerRight: () => (
               <ScreenSwitcher
-                disabledDraft={true}
+                isDisabledDraft={true}
                 onPressNext={() => navigation.navigate('PostStoryScreen')}
               />
             ),
@@ -48,6 +48,17 @@ const AuthorizedScreens: React.FC = () => {
         <Stack.Screen
           name="PostStoryScreen"
           component={Screens.PostStoryScreen}
+          options={{
+            headerShown: true,
+            title: '',
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="StoryScreen"
+          component={Screens.StoryScreen}
           options={{
             headerShown: true,
             title: '',
