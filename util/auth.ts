@@ -15,9 +15,7 @@ export const authenticate = async (
     password: password,
     returnSecureToken: true,
   });
-  console.log(username);
-  console.log(response.data);
-  console.log(email);
+
   return response.data;
 };
 
